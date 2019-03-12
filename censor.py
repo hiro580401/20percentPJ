@@ -22,7 +22,7 @@ if __name__ == '__main__':
             # Censing
             if(GPIO.input(GPIO_PIN) == GPIO.HIGH):
                 print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') +
-                "：" + str"{0:05d}".format(cnt)) + "times")
+                ":" + str"{0:05d}".format(cnt)) + "times")
                 cnt = cnt + 1
                 time.sleep(SLEEPTIME)
             else:
