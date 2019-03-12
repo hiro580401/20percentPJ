@@ -1,3 +1,5 @@
+# coding=<UTF-8>
+
 from datetime import datetime
 import time
 import RPi.GPIO as GPIO
