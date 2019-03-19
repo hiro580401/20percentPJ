@@ -9,7 +9,7 @@ MESSAGE_COUNT = 1
 AVG_WIND_SPEED = 10.0
 MSG_TXT = "{\"service client sent a message\": %.2f}"
 
-CONNECTION_STRING = "HostName=ICTI-20PJ.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Ub/v8wI9QVR54DXjO+UebcvmyULKc/otx6xaVl0ORAo="
+CONNECTION_STRING = ""
 DEVICE_ID = "Person1-20PJ"
 
 def open_complete_callback(context):
