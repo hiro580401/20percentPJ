@@ -4,6 +4,18 @@
 import random
 import time
 import sys
+from datetime import datetime
+import RPi.GPIO as GPIO
+
+# Interval
+INTERVAL = 3
+# Sleeptime
+SLEEPTIME = 5
+# Used GPIO
+GPIO_PIN = 18
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(GPIO_PIN, GPIO.IN)
 
 # Using the Python Device SDK for IoT Hub:
 #   https://github.com/Azure/azure-iot-sdk-python
@@ -48,6 +60,17 @@ def iothub_client_telemetry_sample_run():
             msg_txt_formatted = MSG_TXT % (temperature, humidity)
             message = IoTHubMessage(msg_txt_formatted)
 
+            cnt = 1
+            # Censing
+            if(GPIO.input(GPIO_PIN) == GPIO.HIGH):
+                print(datetime.now().strftime('%Y/%m/%d %H:%M:%S') +
+                ":" + str("{0:05d}".format(cnt)) + "times")
+                cnt = cnt + 1
+                time.sleep(SLEEPTIME)
+            else:
+                print(GPIO.input(GPIO_PIN))
+                time.sleep(INTERVAL)
+
             # Add a custom application property to the message.
             # An IoT hub can filter on these properties without access to the message body.
             prop_map = message.properties()
@@ -66,6 +89,9 @@ def iothub_client_telemetry_sample_run():
         return
     except KeyboardInterrupt:
         print ( "IoTHubClient sample stopped" )
+    finally:
+        GPIO.cleanup()
+        print("GPIO clean is done")
 
 if __name__ == '__main__':
     print ( "IoT Hub Quickstart #1 - Simulated device" )
