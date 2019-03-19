@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 # Interval
 INTERVAL = 3
 # Sleeptime
-SLEEPTIME = 20
+SLEEPTIME = 5
 # Used GPIO
 GPIO_PIN = 18
 
