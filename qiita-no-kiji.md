@@ -10,3 +10,6 @@ A
 B
 
 +Hirokiv2_branch
+HOGE1
+HOGE2
+HOGE3
